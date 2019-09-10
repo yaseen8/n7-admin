@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row image-bg">
+      <div class="col-12">
+          <div class="container">
+              <div class="row align-items-center justify-content-center" style="height: 100vh;">
+                  <div class="col-md-6">
+                      <form [formGroup]="fg" (ngSubmit)="login()">
+                          <mat-card style="background: none;">
+                              <mat-card-content>
+                                  <h1 class="mat-display-1 mb-20">
+                                      Login
+                                      <mat-divider></mat-divider>
+                                  </h1>
+
+                                  <mat-form-field class="full-width mb-10">
+                                      <input matInput placeholder="Email" required formControlName="email">
+                                      <mat-error *ngIf="fg.get('email').hasError('required')">This field is required</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="full-width mb-10">
+                                      <input matInput type="password" placeholder="password" required formControlName="password">
+                                      <mat-error *ngIf="fg.get('password').hasError('required')">This field is required</mat-error>
+                                  </mat-form-field>
+                                  <div>
+                                      <button mat-flat-button [disabled] = "!fg.valid">Login</button>
+                                      <mat-spinner [diameter]="30" class="inline-spinner ml-10" *ngIf="loading"></mat-spinner>
+                                  </div>
+                              </mat-card-content>
+                          </mat-card>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>

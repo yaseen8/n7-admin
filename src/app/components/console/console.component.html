@@ -1,0 +1,92 @@
+<mat-toolbar color="primary" class="mat-elevation-z3 nav-first">
+  <mat-toolbar-row>
+      <span>n7Group</span>
+      <span class="nav-spacer"></span>
+      <button mat-button  [matMenuTriggerFor]="userMenu" class="ml-20">
+          Menu
+          <!-- <mat-icon>arrow_drop_down</mat-icon> -->
+      </button>
+      <!-- <span class="nav-spacer"></span> -->
+      <!-- <button mat-button class="ml-10" [matMenuTriggerFor]="notificationMenu">
+          <i class="fa fa-bell fa-lg"></i> &nbsp;
+          <i class="fa fa-angle-down fa-lg"></i>
+      </button> -->
+
+      <mat-menu #notificationMenu="matMenu" [overlapTrigger]="false">
+          <div class="pl-20 pr-20">
+              <mat-list>
+                  <mat-list-item>
+                      <h4 mat-line>Notification from me</h4>
+                      <p mat-line> Its a world of things that do it. </p>
+                  </mat-list-item>
+              </mat-list>
+          </div>
+      </mat-menu>
+
+      <mat-menu #userMenu="matMenu">
+          <button mat-menu-item routerLink=".">
+              <mat-icon>dashboard</mat-icon>
+              <i class="fa fa-dashboard fa-lg"></i> &nbsp;
+              <span>Dashboard</span>
+          </button>
+          <button mat-menu-item (click)="performLogout()">
+              <mat-icon>power_settings_new</mat-icon>
+              <i class="fa fa-power-off fa-lg"></i> &nbsp;
+              <span>Logout</span>
+          </button>
+      </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!-- <div class="container-fluid"> -->
+<mat-spinner class="list-spinner" [diameter]="30" *ngIf="spinner"></mat-spinner>
+  <div class="row">
+    <div class="col-md-2" >
+        <!--menu-->
+        <mat-nav-list>
+            <div>
+                <a mat-list-item routerLink="." class="text-color">
+                    <mat-icon>dashboard</mat-icon> &nbsp;
+                    Dashboard 
+                  </a>
+               
+            </div>
+            <div>
+                <a mat-list-item routerLink="user" class="text-color">
+                    <mat-icon>people</mat-icon> &nbsp;
+                  Users
+                </a>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div>
+                <a mat-list-item routerLink="invitation" class="text-color">
+                    <mat-icon>insert_invitation</mat-icon> &nbsp;
+                  Invitation
+                </a>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div>
+                <a mat-list-item routerLink="timesheet" class="text-color">
+                    <mat-icon>fingerprint</mat-icon> &nbsp;
+                    Timesheet
+                </a>
+                <mat-divider></mat-divider>
+            </div>
+            <div>
+                <a mat-list-item routerLink="chat" class="text-color">
+                    <mat-icon>chat</mat-icon> &nbsp;
+                    Chat
+                </a>
+                <mat-divider></mat-divider>
+            </div>
+
+    
+        </mat-nav-list>
+    </div>
+    <div class="col-md-10">
+        <!--content-->
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+<!-- </div> -->

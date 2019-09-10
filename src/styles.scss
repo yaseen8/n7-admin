@@ -1,0 +1,246 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@mixin padding-all($v) {
+    padding: $v+px !important;
+}
+
+@mixin padding-top($v) {
+    padding-top: $v+px !important;
+}
+
+@mixin padding-left($v) {
+    padding-left: $v+px !important;
+}
+
+@mixin padding-right($v) {
+    padding-right: $v+px !important;
+}
+
+@mixin padding-bottom($v) {
+    padding-bottom: $v+px !important;
+}
+
+@mixin margin-all($v) {
+    margin: $v+px !important;
+}
+
+@mixin margin-top($v) {
+    margin-top: $v+px !important;
+}
+
+@mixin margin-left($v) {
+    margin-left: $v+px !important;
+}
+
+@mixin margin-right($v) {
+    margin-right: $v+px !important;
+}
+
+@mixin margin-bottom($v) {
+    margin-bottom: $v+px !important;
+}
+
+
+
+@for $i from 0 through 20 {
+    .pa-#{$i*5} {
+        @include padding-all($i*5);
+    }
+    .pt-#{$i*5} {
+        @include padding-top($i*5);
+    }
+    .pl-#{$i*5} {
+        @include padding-left($i*5);
+    }
+    .pr-#{$i*5} {
+        @include padding-right($i*5);
+    }
+    .pb-#{$i*5} {
+        @include padding-bottom($i*5);
+    } // margin
+    .ma-#{$i*5} {
+        @include margin-all($i*5);
+    }
+    .mt-#{$i*5} {
+        @include margin-top($i*5);
+    }
+    .ml-#{$i*5} {
+        @include margin-left($i*5);
+    }
+    .mr-#{$i*5} {
+        @include margin-right($i*5);
+    }
+    .mb-#{$i*5} {
+        @include margin-bottom($i*5);
+    } // negative margin
+    .mna-#{$i*-5} {
+        @include margin-all($i*-5);
+    }
+    .mnt-#{$i*5} {
+        @include margin-top($i*5);
+    }
+    .mnl-#{$i*5} {
+        @include margin-left($i*-5);
+    }
+    .mnr-#{$i*5} {
+        @include margin-right($i*-5);
+    }
+    .mnb-#{$i*5} {
+        @include margin-bottom($i*-5);
+    }
+}
+
+.mlr-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-img-button {
+    height: 40px;
+    line-height: 40px;
+    img {
+        height: 75%;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.form-fixed-width {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.hidden-overflow {
+    overflow: hidden;
+}
+
+.scroll-overflow {
+    overflow-y: auto;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.vertically-middle {
+    vertical-align: middle;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.no-text-decoration {
+    text-decoration: none;
+}
+
+.inline-spinner {
+    display: inline-block !important;
+    vertical-align: middle;
+}
+
+.nav-list-icon-right {
+    position: absolute;
+    right: 10px;
+}
+
+.list-spinner {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.table-border {
+    width: 100%;
+    border-spacing: 0px;
+    td {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.table-head {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 500
+}
+
+.mat-list-item:hover {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+.success {
+    background: rgba(40, 167, 69, 0.5)
+}
+
+.danger {
+    background: rgba(226, 24, 44, 0.5);
+}
+
+.custom-inp-loading {
+    margin-top: -15px;
+}
+
+.custom-inp-btn {
+    margin-top: -25px !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 30px !important;
+    .mat-icon {
+        line-height: 20px !important;
+        font-size: 20px !important;
+    }
+}
+
+.block-list-item {
+    display: inline-block !important;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 100% !important;
+}
+
+.inline-list-item {
+    display: inline-block !important;
+}
+
+.ver-space {
+    height: 35px;
+    vertical-align: top;
+}
