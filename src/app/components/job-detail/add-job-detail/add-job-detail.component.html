@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>
+  Add Job Detail</h2>
+<mat-dialog-content>
+  <form [formGroup]="fg">
+      <mat-form-field class="full-width">
+          <input matInput type="text" placeholder="Select User (By name or email)" formControlName="name" (ngModelChange)="searchUser($event)" required [matAutocomplete]="user">
+          <mat-autocomplete #user="matAutocomplete">
+              <mat-option *ngFor="let u of userList" [value]="u.name" (onSelectionChange)="onUserSelect(u.id)">
+                  {{ u.name }} ({{(u.email)}})
+              </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="hasError('name', 'required')">This Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+          <input matInput type="text" placeholder="Location" formControlName="job_location" required>
+          <mat-error *ngIf="hasError('job_location', 'required')">This Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+          <input matInput  formControlName="start_time" required placeholder="Start Time" [ngxTimepicker]="startTime" [format]="24"  readonly>
+          <ngx-material-timepicker #startTime></ngx-material-timepicker>
+          <mat-error *ngIf="hasError('start_time', 'required')">This Field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+          <input matInput type="text" formControlName="end_time" required placeholder="End Time" [ngxTimepicker]="endTime" [format]="24"  readonly>
+          <ngx-material-timepicker #endTime></ngx-material-timepicker>
+          <mat-error *ngIf="hasError('end_time', 'required')">This Field is required</mat-error>
+      </mat-form-field>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions class="pb-20">
+
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button [disabled]="!fg.valid" mat-button mat-flat-button (click)="addJobDetail()">Add</button>
+  <mat-spinner [diameter]="30" class="inline-spinner" *ngIf="spinner"></mat-spinner>
+</mat-dialog-actions>

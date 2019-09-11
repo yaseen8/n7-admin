@@ -20,6 +20,10 @@ import { InvitationComponent } from './components/invitation/invitation.componen
 import { SendInvitationComponent } from './components/invitation/send-invitation/send-invitation.component';
 import { AttendenceHistoryComponent } from './components/attendence-history/attendence-history.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { JobDetailComponent } from './components/job-detail/job-detail.component';
+import { UpdateJobDetailComponent } from './components/job-detail/update-job-detail/update-job-detail.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { AddJobDetailComponent } from './components/job-detail/add-job-detail/add-job-detail.component';
 const lockerConfig = {
   driverNamespace: "n7",
   driverFallback: [DRIVERS.SESSION, DRIVERS.LOCAL, DRIVERS.COOKIE],
@@ -37,7 +41,10 @@ const lockerConfig = {
     InvitationComponent,
     SendInvitationComponent,
     AttendenceHistoryComponent,
-    ChatComponent
+    ChatComponent,
+    JobDetailComponent,
+    UpdateJobDetailComponent,
+    AddJobDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,8 @@ const lockerConfig = {
     FormsModule,
     ReactiveFormsModule,
     LockerModule.withConfig(lockerConfig),
-    HttpClientModule
+    HttpClientModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [  
     
@@ -60,7 +68,9 @@ const lockerConfig = {
     // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
   ],
   entryComponents : [
-    SendInvitationComponent
+    SendInvitationComponent,
+    UpdateJobDetailComponent,
+    AddJobDetailComponent
   ],
   bootstrap: [AppComponent]
 })

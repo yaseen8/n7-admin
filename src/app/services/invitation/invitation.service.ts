@@ -25,4 +25,8 @@ export class InvitationService {
   resendMail(data) {
     return this.http.post(this.apiService.getRoute('resend_mail'), data);
   }
+
+  searchByEmail(query) {
+    return this.http.get(this.apiService.getRoute('search_by_email', {'query' : query}));
+  }
 }

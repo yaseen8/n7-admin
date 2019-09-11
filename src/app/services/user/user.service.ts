@@ -13,4 +13,12 @@ export class UserService {
   getUserList() {
     return this.http.get(this.apiService.getRoute('user_list'));
   }
+
+  searchUser(query) {
+    return this.http.get(this.apiService.getRoute('search_user', {'query' : query}));
+  }
+
+  searchAllUser(query) {
+    return this.http.get(this.apiService.getRoute('search_all_user', {'query' : query}));    
+  }
 }

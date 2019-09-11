@@ -50,6 +50,21 @@ export class UserComponent implements OnInit {
     )
   }
 
+  search(query) {
+    if(query.length) {
+      this.userService.searchAllUser(query).subscribe(
+        (resp) => {
+        this.userList = resp['data'];
+        this.total = resp['total'];
+        this.pageSize = resp['per_page'];
+        }
+      )
+    }
+    else {
+      this.getUserList();
+    }
+  }
+
   onPageChange(e) {
     let qp = Object.assign({}, this.activatedRoute.snapshot.queryParams);
     qp['page'] = e.pageIndex + 1;

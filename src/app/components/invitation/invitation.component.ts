@@ -89,6 +89,21 @@ export class InvitationComponent implements OnInit {
     )
   }
 
+  search(query) {
+    if(query) {
+      this.invitationService.searchByEmail(query).subscribe(
+        (resp) => {
+          this.inviteList = resp['data'];
+          this.total = resp['total'];
+          this.pageSize = resp['per_page'];
+        }
+      )
+    }
+    else {
+      this.getInvitationList();
+    }
+  }
+
   onPageChange(e) {
     let qp = Object.assign({}, this.activatedRoute.snapshot.queryParams);
     qp['page'] = e.pageIndex + 1;

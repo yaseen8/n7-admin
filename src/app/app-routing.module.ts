@@ -7,6 +7,7 @@ import { UserComponent } from './components/user/user.component';
 import { InvitationComponent } from './components/invitation/invitation.component';
 import { AttendenceHistoryComponent } from './components/attendence-history/attendence-history.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { JobDetailComponent } from './components/job-detail/job-detail.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path : "chat",
         component: ChatComponent
+      },
+      {
+        path : "job-location",
+        component : JobDetailComponent
       }
     ]
   }

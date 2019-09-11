@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  server: 'http://127.0.0.1:8000/api/',
-  //  server : 'http://www.alphazzz.com/n7/public/api/'
+  // server: 'http://127.0.0.1:8000/api/',
+   server : 'http://www.alphazzz.com/n7/public/api/'
 
 };
 
