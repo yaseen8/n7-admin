@@ -9,7 +9,7 @@ import { AppUiModule } from "./app-ui.module";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { HttpAuthInterceptor } from "./interceptors/http-auth.interceptor";
 import { HttpAdditionalHeaderInterceptor } from "./interceptors/http-additional-header.interceptor";
-// import { HttpErrorInterceptor } from "./interceptors/http-error.interceptor";
+import { HttpErrorInterceptor } from "./interceptors/http-error.interceptor";
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DRIVERS, LockerModule } from "angular-safeguard";
 import { ApiService } from './services/api.service';
@@ -65,7 +65,7 @@ const lockerConfig = {
       useClass: HttpAdditionalHeaderInterceptor,
       multi: true
     },
-    // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
   ],
   entryComponents : [
     SendInvitationComponent,

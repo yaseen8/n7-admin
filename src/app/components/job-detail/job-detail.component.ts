@@ -18,6 +18,7 @@ export class JobDetailComponent implements OnInit {
   total = 0;
   pageSize = 0;
   jobLocationList : any = [];
+  name : string;
 
   constructor(private activatedRoute : ActivatedRoute,
               private router : Router,

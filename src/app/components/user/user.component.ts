@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   total = 0;
   pageSize = 0;
   userList : any = [];
+  name : string;
 
   constructor(private userService : UserService,
               private activatedRoute : ActivatedRoute,

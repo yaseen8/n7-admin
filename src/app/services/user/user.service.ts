@@ -21,4 +21,12 @@ export class UserService {
   searchAllUser(query) {
     return this.http.get(this.apiService.getRoute('search_all_user', {'query' : query}));    
   }
+
+  userSelectList() {
+    return this.http.get(this.apiService.getRoute('user_select_list'));
+  }
+
+  loggedInUser() {
+    return this.http.get(this.apiService.getRoute('logged_in_user'));
+  }
 }

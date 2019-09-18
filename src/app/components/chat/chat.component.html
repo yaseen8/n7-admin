@@ -1,9 +1,36 @@
 <div class="row">
-  <div class="col-md-3 mt-50">
-    <mat-list >
-      <mat-list-item class="list-style"> Pepper </mat-list-item>
-      <mat-list-item class="list-style"> Salt </mat-list-item>
-      <mat-list-item class="list-style"> Paprika </mat-list-item>
-     </mat-list>
+  <div class="col-md-3 mt-40">
+    <mat-list>
+      <mat-form-field class="full-width list-style">
+        <input matInput type="text" style="color: white" placeholder="Search by name or email" [(ngModel)]="query" (ngModelChange)="search()">
+      </mat-form-field>
+      <mat-list-item class="list-style" *ngFor="let u of userList" (click)="selectUserForChat(u)"> {{u.name + ' ' + u.surname}} </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="col-md-9 mt-45" *ngIf="showChatBox">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{selectedUser.name}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngFor="let chat of chatList">
+        <p *ngIf="chat.user.user_type == 'user' ">{{chat.body}}</p>
+        <p style="float: right" *ngIf="chat.user.user_type == 'admin' ">{{chat.body}}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="row">
+          <div class="col-md-10">
+            <mat-form-field class="full-width list-style">
+              <input matInput type="text" style="color: white" placeholder="Type your message..." [(ngModel)]="message">
+            </mat-form-field>
+          </div>
+          <div class="col-md-2 mt-20">
+            <button mat-flat-button type="button" [disabled]="!message" (click)="sendMessage()">Send</button>
+          </div>
+        </div>
+
+      </mat-card-footer>
+    </mat-card>
   </div>
 </div>

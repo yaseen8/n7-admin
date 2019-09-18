@@ -17,6 +17,7 @@ export class InvitationComponent implements OnInit {
   total = 0;
   pageSize = 0;
   inviteList : any = [];
+  name : string;
 
   constructor(private activatedRoute : ActivatedRoute,
               private router : Router,
