@@ -4,11 +4,11 @@
             <mat-spinner class="list-spinner" [diameter]="30" *ngIf="spinner"></mat-spinner>
             <div class="row">
                 <div class="col-md-3">
-                    
+                    <button class="mb-10" type="button" mat-flat-button (click)="addUser()">Add User</button>                    
                 </div>
                 <div class="col-md-6" style="background-color: #424242">
                     <mat-form-field class="full-width">
-                        <input matInput type="text" placeholder="Search by name or email" [(ngModel)]="name" (ngModelChange)="search(name)">
+                        <input matInput type="text" placeholder="Search by Name/Email/Licence #" [(ngModel)]="name" (ngModelChange)="search(name)">
                     </mat-form-field>
                 </div>
             </div>
@@ -51,6 +51,10 @@
                     <ng-container matColumnDef="nok_contact">
                         <mat-header-cell *matHeaderCellDef>Nok Contact</mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element.nok_contact}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="licence">
+                        <mat-header-cell *matHeaderCellDef>Security Licence #</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.security_licence.license_number}}</mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="action">
                         <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>

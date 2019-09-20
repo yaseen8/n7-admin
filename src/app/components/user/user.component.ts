@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserModelComponent } from './user-model/user-model.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  displayedColumns = ['s_no', 'name', 'surname', 'email', 'dob', 'mobile', 'address', 'nok_name', 'nok_contact','action'];
+  displayedColumns = ['s_no', 'name', 'surname', 'email', 'dob', 'mobile', 'address', 'nok_name', 'nok_contact','licence','action'];
   filter: any = {};
   spinner: boolean = false;
   total = 0;
@@ -19,7 +21,8 @@ export class UserComponent implements OnInit {
 
   constructor(private userService : UserService,
               private activatedRoute : ActivatedRoute,
-              private router : Router) { }
+              private router : Router,
+              private dialog : MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(qp => {
@@ -40,7 +43,6 @@ export class UserComponent implements OnInit {
     this.userService.getUserList().subscribe(
       (resp) => {
         this.spinner = false;
-        console.log(resp);
         this.userList = resp['data'];
         this.total = resp['total'];
         this.pageSize = resp['per_page'];
@@ -64,6 +66,19 @@ export class UserComponent implements OnInit {
     else {
       this.getUserList();
     }
+  }
+
+  addUser() {
+    let dialogRef = this.dialog.open(UserModelComponent, {
+      width: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe(resp => {
+      if (resp) {
+        console.log(resp);
+        this.getUserList();
+      }
+    });
   }
 
   onPageChange(e) {

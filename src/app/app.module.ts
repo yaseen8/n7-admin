@@ -24,6 +24,7 @@ import { JobDetailComponent } from './components/job-detail/job-detail.component
 import { UpdateJobDetailComponent } from './components/job-detail/update-job-detail/update-job-detail.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { AddJobDetailComponent } from './components/job-detail/add-job-detail/add-job-detail.component';
+import { UserModelComponent } from './components/user/user-model/user-model.component';
 const lockerConfig = {
   driverNamespace: "n7",
   driverFallback: [DRIVERS.SESSION, DRIVERS.LOCAL, DRIVERS.COOKIE],
@@ -44,7 +45,8 @@ const lockerConfig = {
     ChatComponent,
     JobDetailComponent,
     UpdateJobDetailComponent,
-    AddJobDetailComponent
+    AddJobDetailComponent,
+    UserModelComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ const lockerConfig = {
   entryComponents : [
     SendInvitationComponent,
     UpdateJobDetailComponent,
-    AddJobDetailComponent
+    AddJobDetailComponent,
+    UserModelComponent
   ],
   bootstrap: [AppComponent]
 })
