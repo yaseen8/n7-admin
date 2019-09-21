@@ -29,4 +29,20 @@ export class UserService {
   loggedInUser() {
     return this.http.get(this.apiService.getRoute('logged_in_user'));
   }
+
+  checkUserEmail(email) {
+    return this.http.get(this.apiService.getRoute('check_user_email',email))
+  }
+
+  addUser(data) {
+    return this.http.post(this.apiService.getRoute('register_by_admin'),data);
+  }
+  
+  updateUser(data, id) {
+    return this.http.put(this.apiService.getRoute('update_user/' + id),data);
+  }
+
+  getCompanyList() {
+    return this.http.get(this.apiService.getRoute('get_company_list'));
+  }
 }

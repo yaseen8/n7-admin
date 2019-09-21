@@ -21,7 +21,7 @@
                                       <mat-error *ngIf="fg.get('password').hasError('required')">This field is required</mat-error>
                                   </mat-form-field>
                                   <div>
-                                      <button mat-flat-button [disabled] = "!fg.valid">Login</button>
+                                      <button mat-flat-button color="primary" [disabled] = "!fg.valid">Login</button>
                                       <mat-spinner [diameter]="30" class="inline-spinner ml-10" *ngIf="loading"></mat-spinner>
                                   </div>
                               </mat-card-content>

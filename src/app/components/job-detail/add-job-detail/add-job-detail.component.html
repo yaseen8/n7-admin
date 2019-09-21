@@ -31,6 +31,6 @@
 <mat-dialog-actions class="pb-20">
 
   <button mat-button mat-dialog-close>Cancel</button>
-  <button [disabled]="!fg.valid" mat-button mat-flat-button (click)="addJobDetail()">Add</button>
+  <button [disabled]="!fg.valid" color="primary" mat-button mat-flat-button (click)="addJobDetail()">Add</button>
   <mat-spinner [diameter]="30" class="inline-spinner" *ngIf="spinner"></mat-spinner>
 </mat-dialog-actions>

@@ -3,6 +3,7 @@ import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserModelComponent } from './user-model/user-model.component';
 import { MatDialog } from '@angular/material';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @Component({
   selector: 'app-user',
@@ -71,6 +72,21 @@ export class UserComponent implements OnInit {
   addUser() {
     let dialogRef = this.dialog.open(UserModelComponent, {
       width: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe(resp => {
+      if (resp) {
+        console.log(resp);
+        this.getUserList();
+      }
+    });
+  }
+
+  updateUser(data) {
+    console.log(data)
+    let dialogRef = this.dialog.open(UpdateUserComponent, {
+      width: '70%',
+      data : data
     });
 
     dialogRef.afterClosed().subscribe(resp => {

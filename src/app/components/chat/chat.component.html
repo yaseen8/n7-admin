@@ -1,10 +1,16 @@
 <div class="row">
   <div class="col-md-3 mt-40">
     <mat-list>
-      <mat-form-field class="full-width list-style">
+      <mat-form-field class="full-width">
         <input matInput type="text" style="color: white" placeholder="Search by name or email" [(ngModel)]="query" (ngModelChange)="search()">
       </mat-form-field>
-      <mat-list-item class="list-style" *ngFor="let u of userList" (click)="selectUserForChat(u)"> {{u.name + ' ' + u.surname}} </mat-list-item>
+      <div>
+          <a mat-list-item *ngFor="let u of userList" (click)="selectUserForChat(u)"  class="text-color"> {{u.name + ' ' + u.surname}}
+              <mat-divider></mat-divider>
+          </a>
+         
+      </div>
+      <!-- <mat-list-item  *ngFor="let u of userList" (click)="selectUserForChat(u)"> {{u.name + ' ' + u.surname}} </mat-list-item> -->
     </mat-list>
   </div>
   <div class="col-md-9 mt-45" *ngIf="showChatBox">
@@ -21,7 +27,7 @@
       <mat-card-footer>
         <div class="row">
           <div class="col-md-10">
-            <mat-form-field class="full-width list-style">
+            <mat-form-field class="full-width">
               <input matInput type="text" style="color: white" placeholder="Type your message..." [(ngModel)]="message">
             </mat-form-field>
           </div>
