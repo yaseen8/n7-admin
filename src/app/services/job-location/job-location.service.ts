@@ -11,18 +11,18 @@ export class JobLocationService {
               private http : HttpClient) { }
   
   getJobLocations() {
-    return this.http.get(this.apiService.getRoute('job_detail_list'));
+    return this.http.get(this.apiService.getRoute('jobs'));
   }
 
-  searchJobByUser(name) {
-    return this.http.get(this.apiService.getRoute('job_by_user', {'name' : name}));
+  searchJobs(query) {
+    return this.http.get(this.apiService.getRoute('search_jobs', {'query' : query}));
   }
 
   updateJobDetail(data, id) {
-    return this.http.put(this.apiService.getRoute('job_detail/' + id), data);
+    return this.http.put(this.apiService.getRoute('job/' + id), data);
   }
 
   addJobDetail(data) {
-    return this.http.post(this.apiService.getRoute('job_detail'), data);
+    return this.http.post(this.apiService.getRoute('job'), data);
   }
 }

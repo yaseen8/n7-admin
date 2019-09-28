@@ -1,20 +1,17 @@
 <h2 mat-dialog-title>
-  Add Job Detail</h2>
+  Add Job</h2>
 <mat-dialog-content>
   <form [formGroup]="fg">
       <mat-form-field class="full-width">
-          <input matInput type="text" placeholder="Select User (By name or email)" formControlName="name" (ngModelChange)="searchUser($event)" required [matAutocomplete]="user">
-          <mat-autocomplete #user="matAutocomplete">
-              <mat-option *ngFor="let u of userList" [value]="u.name" (onSelectionChange)="onUserSelect(u.id)">
-                  {{ u.name }} ({{(u.email)}})
-              </mat-option>
-          </mat-autocomplete>
-          <mat-error *ngIf="hasError('name', 'required')">This Field is required</mat-error>
+          <input matInput type="text" placeholder="Location" formControlName="location" required>
+          <mat-error *ngIf="hasError('location', 'required')">This Field is required</mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-          <input matInput type="text" placeholder="Location" formControlName="job_location" required>
-          <mat-error *ngIf="hasError('job_location', 'required')">This Field is required</mat-error>
-      </mat-form-field>
+        <input matInput [matDatepicker]="date" [min]="minDate" placeholder="Date" formControlName="date" (focus)="date.open()" required>
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
+        <mat-error *ngIf="hasError('date', 'required')">This Field is required</mat-error>
+    </mat-form-field>
       <mat-form-field class="full-width">
           <input matInput  formControlName="start_time" required placeholder="Start Time" [ngxTimepicker]="startTime" [format]="24"  readonly>
           <ngx-material-timepicker #startTime></ngx-material-timepicker>

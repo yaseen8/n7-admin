@@ -11,9 +11,13 @@ import { JobLocationService } from '../../../services/job-location/job-location.
 export class UpdateJobDetailComponent implements OnInit {
 
   spinner : boolean = false;
+  minDate : string;
 
   fg = new FormGroup({
-    location : new FormControl(this.data.job_location, [
+    location : new FormControl(this.data.location, [
+      Validators.required
+    ]),
+    date : new FormControl(this.data.date, [
       Validators.required
     ]),
     start_time : new FormControl(this.data.start_time, [
@@ -22,7 +26,7 @@ export class UpdateJobDetailComponent implements OnInit {
     end_time : new FormControl(this.data.end_time, [
       Validators.required
     ]),
-    fk_user_id : new FormControl(this.data.fk_user_id, [
+    status : new FormControl(this.data.status, [
       Validators.required
     ])
   })
@@ -32,16 +36,21 @@ export class UpdateJobDetailComponent implements OnInit {
               private jobDetailService : JobLocationService,
               private snackbar : MatSnackBar) {
                 let start_time = this.data.start_time.split(':');
-                this.data.start_time = start_time[0] + ':' + start_time[1];
+                this.fg.get('start_time').setValue(start_time[0] + ':' + start_time[1]);
                 let end_time = this.data.end_time.split(':');
-                this.data.end_time = end_time[0] + ':' + end_time[1];
+                this.fg.get('end_time').setValue(end_time[0] + ':' + end_time[1]);
+                let tDate = new Date();
+                this.minDate = tDate.toISOString();
                }
               
 
   ngOnInit() {
   }
 
-  updateJobDetail() {
+  updateJob() {
+    if(typeof this.fg.value.date == 'object') {
+      this.fg.get('date').setValue(this.getDate(this.fg.value.date));
+    }
     this.spinner = true;
     this.jobDetailService.updateJobDetail(this.fg.value, this.data.id).subscribe(
       (resp) => {
@@ -58,6 +67,19 @@ export class UpdateJobDetailComponent implements OnInit {
         });
       }
     )
+  }
+
+  getDate(date) {
+    let dd = date['_i']['date'];
+    let mm = date['_i']['month'] + 1;
+    let yyyy = date['_i']['year'];
+    if(dd <= 9) {
+      dd = '0' + dd;
+    }
+    if(mm <= 9) {
+      mm = '0' + mm;
+    }
+   return yyyy + '-' + mm + '-' + dd;
   }
 
   hasError(control: string, errorName: string) {

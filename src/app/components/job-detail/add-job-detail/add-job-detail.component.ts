@@ -12,13 +12,13 @@ import { JobLocationService } from '../../../services/job-location/job-location.
 export class AddJobDetailComponent implements OnInit {
 
   spinner : boolean = false;
-  userList : any = [];
+  minDate : string;
 
   fg = new FormGroup({
-    name : new FormControl('', [
+    location : new FormControl('', [
       Validators.required
     ]),
-    job_location : new FormControl('', [
+    date : new FormControl('', [
       Validators.required
     ]),
     start_time : new FormControl('', [
@@ -27,7 +27,7 @@ export class AddJobDetailComponent implements OnInit {
     end_time : new FormControl('', [
       Validators.required
     ]),
-    fk_user_id : new FormControl('', [
+    status : new FormControl('open', [
       Validators.required
     ])
   })
@@ -35,62 +35,47 @@ export class AddJobDetailComponent implements OnInit {
   constructor(public dialogRef : MatDialogRef<AddJobDetailComponent>,
               private userService  : UserService,
               private jobDetailService : JobLocationService,
-              private snackbar : MatSnackBar) { }
+              private snackbar : MatSnackBar) { 
+
+                let tDate = new Date();
+                this.minDate = tDate.toISOString();
+              }
 
   ngOnInit() {
   }
 
-  searchUser(query) {
-    if(query.length) {
-      this.userService.searchUser(query).subscribe(
-        (resp) => {
-        this.userList = resp;
-        }
-      )
-    }
-    else {
-      this.userList = [];
-    }
-  }
-
-  onUserSelect(id) {
-    if(id) {
-      this.fg.get('fk_user_id').setValue(id);
-    }
-  }
-
   addJobDetail() {
-    console.log(this.fg.value.fk_user_id);
-    if(!this.fg.value.fk_user_id) {
-      this.snackbar.open("Please select user from list", "", {
-        duration : 3000
-      });
-      return false;
-    }
+    this.fg.get('date').setValue(this.getDate(this.fg.value.date));
     this.spinner = true;
     this.jobDetailService.addJobDetail(this.fg.value).subscribe(
       (resp) => {
         this.spinner = false;
-        this.snackbar.open("Detail successfully added", "", {
+        this.snackbar.open("Job successfully added", "", {
           duration : 3000
         });
         this.dialogRef.close(resp);
       },
       (error) => {
         this.spinner = false;
-        console.log(error);
-        if(error['error'] === 'user already have job.') {
-          this.snackbar.open("User already have job", "", {
-            duration : 3000
-          });
-        }
-        else {
+
         this.snackbar.open("Something went wrong", "", {
           duration : 3000
         });
       }
-      }
     )
+  }
+
+  getDate(date) {
+    let dd = date['_i']['date'];
+    let mm = date['_i']['month'] + 1;
+    let yyyy = date['_i']['year'];
+    if(dd <= 9) {
+      dd = '0' + dd;
+    }
+    if(mm <= 9) {
+      mm = '0' + mm;
+    }
+    return (yyyy + '-' + mm + '-' + dd);
   }
 
   hasError(control: string, errorName: string) {

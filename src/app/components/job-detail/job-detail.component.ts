@@ -12,7 +12,7 @@ import { AddJobDetailComponent } from './add-job-detail/add-job-detail.component
 })
 export class JobDetailComponent implements OnInit {
 
-  displayedColumns = ['s_no','user', 'job_loc','start_time','end_time','action'];
+  displayedColumns = ['s_no','location', 'date','start_time','end_time','status','action'];
   filter: any = {};
   spinner: boolean = false;
   total = 0;
@@ -54,9 +54,9 @@ export class JobDetailComponent implements OnInit {
     )
   }
 
-  search(name) {
-    if(name.length) {
-      this.jobLocationService.searchJobByUser(name).subscribe(
+  search(query) {
+    if(query.length) {
+      this.jobLocationService.searchJobs(query).subscribe(
         (resp) => {
         this.jobLocationList = resp['data'];
         this.total = resp['total'];

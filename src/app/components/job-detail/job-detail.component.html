@@ -4,11 +4,11 @@
           <mat-spinner class="list-spinner" [diameter]="30" *ngIf="spinner"></mat-spinner>
           <div class="row">
               <div class="col-md-3">
-                  <button class="mb-10" color="primary" type="button" mat-flat-button (click)="add()">Set Job Location</button>
+                  <button class="mb-10" color="primary" type="button" mat-flat-button (click)="add()">Add Job</button>
               </div>
               <div class="col-md-6">
                   <mat-form-field class="full-width">
-                      <input matInput type="text" placeholder="Search by name or email" [(ngModel)]="name" (ngModelChange)="search(name)">
+                      <input matInput type="text" placeholder="Search by Location / Date(YYYY-MM-DD)" [(ngModel)]="name" (ngModelChange)="search(name)">
                   </mat-form-field>
               </div>
           </div>
@@ -20,13 +20,13 @@
                       <mat-cell *matCellDef="let element; let i=index"> {{i+1}}</mat-cell>
                   </ng-container>
 
-                  <ng-container matColumnDef="user">
-                      <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
-                      <mat-cell *matCellDef="let element"> {{element.user.name}}</mat-cell>
+                  <ng-container matColumnDef="location">
+                      <mat-header-cell *matHeaderCellDef>Location</mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.location}}</mat-cell>
                   </ng-container>
-                  <ng-container matColumnDef="job_loc">
-                    <mat-header-cell *matHeaderCellDef>Job Location</mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.job_location}}</mat-cell>
+                  <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.date}}</mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="start_time">
                   <mat-header-cell *matHeaderCellDef>Start Time</mat-header-cell>
@@ -35,6 +35,10 @@
               <ng-container matColumnDef="end_time">
                 <mat-header-cell *matHeaderCellDef>End Time</mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.end_time}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status}}</mat-cell>
               </ng-container>
               <ng-container matColumnDef="action">
                 <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
