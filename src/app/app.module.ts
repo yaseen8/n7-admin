@@ -26,6 +26,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { AddJobDetailComponent } from './components/job-detail/add-job-detail/add-job-detail.component';
 import { UserModelComponent } from './components/user/user-model/user-model.component';
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
+import { JobRequestsComponent } from './components/job-requests/job-requests.component';
+import { JobAssignedComponent } from './components/job-assigned/job-assigned.component';
 const lockerConfig = {
   driverNamespace: "n7",
   driverFallback: [DRIVERS.SESSION, DRIVERS.LOCAL, DRIVERS.COOKIE],
@@ -48,7 +50,9 @@ const lockerConfig = {
     UpdateJobDetailComponent,
     AddJobDetailComponent,
     UserModelComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    JobRequestsComponent,
+    JobAssignedComponent
   ],
   imports: [
     BrowserModule,

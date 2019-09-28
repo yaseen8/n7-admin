@@ -9,7 +9,7 @@ export class JobLocationService {
 
   constructor(private apiService : ApiService,
               private http : HttpClient) { }
-  
+
   getJobLocations() {
     return this.http.get(this.apiService.getRoute('jobs'));
   }
@@ -24,5 +24,16 @@ export class JobLocationService {
 
   addJobDetail(data) {
     return this.http.post(this.apiService.getRoute('job'), data);
+  }
+
+  getJobRequests(id) {
+    return this.http.get(this.apiService.getRoute('job_requests', {'job_id' : id}));
+  }
+
+  assignJob(data) {
+    return this.http.post(this.apiService.getRoute('job_assign'), data);
+  }
+  getJobAssigned() {
+    return this.http.get(this.apiService.getRoute('job_assigned'));
   }
 }

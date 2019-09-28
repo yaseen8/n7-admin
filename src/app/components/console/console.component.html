@@ -42,12 +42,13 @@
 <!-- <div class="container-fluid"> -->
 <mat-spinner class="list-spinner" [diameter]="30" *ngIf="spinner"></mat-spinner>
 <div class="row">
-    <div class="col-2 sidebar space-top">
+    <div class="col-3 sidebar space-top">
         <!--menu-->
         <mat-nav-list>
             <div>
                 <a mat-list-item routerLink="." class="text-color">
                     <mat-icon>dashboard</mat-icon> &nbsp; Dashboard
+                  <mat-divider></mat-divider>
                 </a>
             </div>
             <div>
@@ -80,9 +81,15 @@
                 </a>
                 <mat-divider></mat-divider>
             </div>
+          <div>
+            <a mat-list-item routerLink="job-assigned" class="text-color">
+              <mat-icon>assignment_turned_in</mat-icon> &nbsp; Assigned Jobs
+            </a>
+            <mat-divider></mat-divider>
+          </div>
         </mat-nav-list>
     </div>
-    <div class="col-10 content-pane-main">
+    <div class="col-9 content-pane-main">
         <div class="row">
             <div class="col space-top">
                 <router-outlet></router-outlet>

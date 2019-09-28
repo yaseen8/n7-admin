@@ -8,6 +8,8 @@ import { InvitationComponent } from './components/invitation/invitation.componen
 import { AttendenceHistoryComponent } from './components/attendence-history/attendence-history.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { JobDetailComponent } from './components/job-detail/job-detail.component';
+import {JobRequestsComponent} from "./components/job-requests/job-requests.component";
+import {JobAssignedComponent} from "./components/job-assigned/job-assigned.component";
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
       {
         path : "job-location",
         component : JobDetailComponent
+      },
+      {
+        path : "requests/:id",
+        component : JobRequestsComponent
+      },
+      {
+        path: 'job-assigned',
+        component: JobAssignedComponent
       }
     ]
   }

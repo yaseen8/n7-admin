@@ -51,6 +51,10 @@
                             <mat-icon>edit</mat-icon>
                           Update
                         </button>
+                      <button mat-menu-item (click) = "job_requests(element.id, i)" *ngIf="element.total_request">
+                        <mat-icon matBadge="{{element.total_request}}" matBadgeColor="warn">notifications</mat-icon>
+                        Requests
+                      </button>
                     </mat-menu>
                 </mat-cell>
             </ng-container>

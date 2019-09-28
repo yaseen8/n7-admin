@@ -1,0 +1,55 @@
+<div class=" pb-20">
+  <div class="row ">
+    <div class="col-md-12 pt-20 mat-typography">
+      <div class="example-container mat-elevation-z2">
+        <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+        <mat-table #table [dataSource]="assignedList">
+          <ng-container matColumnDef="s_no">
+            <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+            <mat-cell *matCellDef="let element; let i=index"> {{i+1}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="location">
+            <mat-header-cell *matHeaderCellDef>Location</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.job.location}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="user">
+            <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.user.name + ' ' + element.user.surname}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="mobile">
+            <mat-header-cell *matHeaderCellDef>Mobile</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.user.mobile}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="job_time">
+            <mat-header-cell *matHeaderCellDef>Job Date</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.job.date}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="assigned_on">
+            <mat-header-cell *matHeaderCellDef>Assigned Time</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.assigned_on | date : 'medium' }}</mat-cell>
+          </ng-container>
+<!--          <ng-container matColumnDef="action">-->
+<!--            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>-->
+<!--            <mat-cell *matCellDef="let element; let i=index">-->
+<!--              <button mat-icon-button [matMenuTriggerFor]="actionMenu">-->
+<!--                <mat-icon>list</mat-icon>-->
+<!--              </button>-->
+<!--              <mat-menu #actionMenu="matMenu">-->
+<!--                <button mat-menu-item (click) = "assignJob(element, i)" [disabled]="element.job.status == 'assigned' " >-->
+<!--                  <mat-icon>assignment</mat-icon>-->
+<!--                  Assign Job-->
+<!--                </button>-->
+<!--              </mat-menu>-->
+<!--            </mat-cell>-->
+<!--          </ng-container>-->
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator [length]="total" [pageSize]="pageSize" [showFirstLastButtons]="true" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

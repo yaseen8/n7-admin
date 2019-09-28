@@ -94,6 +94,10 @@ export class JobDetailComponent implements OnInit {
     });
   }
 
+  job_requests(id) {
+    this.router.navigate(['admin/requests/' + id]);
+  }
+
   onPageChange(e) {
     let qp = Object.assign({}, this.activatedRoute.snapshot.queryParams);
     qp['page'] = e.pageIndex + 1;
