@@ -1,3 +1,22 @@
 .list-style {
     background-color : #424242
 }
+.mat-card-header{
+    background: #ccc;
+    padding: 10px 5px 0 5px;
+    .mat-card-header-text{
+        .mat-card-title{
+            margin:0 !important;
+        }
+    }
+}
+.mat-card-content{
+    padding: 10px;
+    background: #efefef;
+    font-size: 12px;
+    border-radius:3px;
+    margin: 10px 0 0 0;
+}
+.mat-card-footer{
+    padding: 10px 15px;
+}
